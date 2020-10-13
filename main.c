@@ -3,7 +3,6 @@
 
 #define MAXMEM 5000
 
-
 int 
 main(int argc, char **argv)
 {
@@ -25,16 +24,14 @@ main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-
 	int end = 0;
 	char mem[MAXMEM];
-
 
 	char c;
 	while((c = fgetc(program)) != EOF)
 	{
-		if (c == '>' && (end < MAXMEM)) end++;
-		else if (c == '<' && end) end--;
+		if (c == '>') end = (end + 1) % MAXMEM;
+		else if (c == '<') end = (end - 1 + MAXMEM) % MAXMEM;
 		else if (c == '+') mem[end]++;
 		else if (c == '-') mem[end]--;
 		else if (c == '.') printf("%c", mem[end]);
