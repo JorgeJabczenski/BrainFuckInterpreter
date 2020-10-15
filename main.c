@@ -28,12 +28,11 @@ main(int argc, char **argv)
 	char mem[MAXMEM];
 	char source[MAXCODE];
 
+	/* Joga todo o código em um vetor */
 	char c;
 	while((c = fgetc(program)) != EOF)
-		/* Joga todo o código em um vetor */
 		source[tamCode++] = c;
 	tamCode--; /* Ajusta para o tamanho certo */
-
 
 	int i = 0;
 	while(i < tamCode)
@@ -46,8 +45,14 @@ main(int argc, char **argv)
 		else if (c == '-') mem[end]--;
 		else if (c == '.') printf("%c", mem[end]);
 		else if (c == ',') mem[end] = fgetc(stdin);
-		else if (c == '[') printf("Ainda não foi implementado\n");
-		else if (c == ']') printf("Ainda não foi implementado\n");
+		//else if (c == '[')
+		else if (c == ']')
+		{
+			if (mem[end] != 0)
+			{
+				while(source[--i] != '[');
+			}
+		}
 	}
 
 	return EXIT_SUCCESS;
