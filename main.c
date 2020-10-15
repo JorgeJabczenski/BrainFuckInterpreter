@@ -35,6 +35,7 @@ main(int argc, char **argv)
 	tamCode--; /* Ajusta para o tamanho certo */
 
 	int i = 0;
+	int loopCounter = 0;
 	while(i < tamCode)
 	{
 		c = source[i++];
@@ -45,7 +46,7 @@ main(int argc, char **argv)
 		else if (c == '-') mem[end]--;
 		else if (c == '.') printf("%c", mem[end]);
 		else if (c == ',') mem[end] = fgetc(stdin);
-		//else if (c == '[')
+		else if (c == '[') loopCounter++;
 		else if (c == ']')
 		{
 			if (mem[end] != 0)
